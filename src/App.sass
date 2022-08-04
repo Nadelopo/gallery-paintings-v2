@@ -1,0 +1,84 @@
+*
+  margin: 0
+  padding: 0
+  font-family: Roboto
+  color: var(--color)
+  transition: background-color 300ms linear
+  box-sizing: border-box
+
+.filter__wrapper
+  width: 265px
+  height: 45px
+  transition: .3s
+  padding: 15px 18px 15px 15px
+  border: 1px solid var(--color)
+  border-radius: 8px
+  background: var(--background-el)
+  outline: none
+  font-size: 13px
+
+body
+  background-color: var(--background-color)
+
+body::-webkit-scrollbar
+  width: 10px
+
+body::-webkit-scrollbar-track
+  background-color: var(--background-el)
+  border-radius: 0 0 8px 0
+
+body::-webkit-scrollbar-thumb
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3)
+  background: #7B7B7B
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12)
+  border-radius: 10px
+  transform: matrix(1, 0, 0, -1, 0, 0)
+
+.container
+  margin-right: auto
+  margin-left: auto
+  width: 100%
+
+@media (min-width: 1366px)
+  .container
+    max-width: 1120px
+  .filter__wrapper
+    width: 265px
+
+@media (min-width: 1024px) and (max-width: 1365px)
+  .container
+    max-width: 940px
+  .filter__wrapper
+    width: 220px
+
+@media (min-width: 768px) and (max-width: 1023px)
+  .container
+    max-width: 700px
+  .filter__wrapper
+    width: 160px
+
+@media (min-width: 320px) and (max-width: 767px)
+  .container
+    max-width: 90%
+  .filter__wrapper
+    width: 280px
+
+// html[data-theme='0']
+:root
+  --background-color: #000
+  --color: #fff
+  --background-el: #0C0C0C
+  --border: 1px solid #FFFFFF
+  --background-pages: #464646
+  --color-input: rgba(255, 255, 255, 0.3)
+  --input-back: #fff
+  --tick: rgba(255, 255, 255, 0.3)
+
+html[data-theme='1']
+  --background-color: #fff
+  --color: #000
+  --background-el: rgba(255,255,255, 1)
+  --border: 1px solid rgba(0, 0, 0, 0.3)
+  --background-pages: #EDEDED
+  --input-back: #EFEFEF
+  --tick: rgba(0, 0, 0, 0.3)

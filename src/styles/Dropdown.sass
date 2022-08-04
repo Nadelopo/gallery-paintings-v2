@@ -1,0 +1,57 @@
+.root
+  display: flex
+  align-items: center
+  justify-content: space-between
+  transition: .3s
+  svg
+    cursor: pointer
+    fill: var(--tick)
+  .tick
+    width: 12px
+    height: 6px
+  .clean
+    width: 10px
+    height: 10px
+
+.main
+  position: relative
+
+.list
+  position: absolute
+  z-index: 200
+  background: var(--background-el)
+  width: 100%
+  padding-top: 10px
+  border-radius: 0 0 8px 8px
+  border: 1px solid var(--color)
+  opacity: 0
+  transition: .3s
+  overflow-y: scroll
+  visibility: hidden
+  height: 100px
+  &::-webkit-scrollbar
+    width: 9px
+  &::-webkit-scrollbar-thumb
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3)
+    background: #7B7B7B
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12)
+    border-radius: 10px
+    transform: matrix(1, 0, 0, -1, 0, 0)
+  &.list__active
+    border-top: 1px solid var(--border)
+
+.list__active
+  visibility: visible
+  transition: .3s
+  opacity: 1
+  height: 305px
+
+.tick
+  transition: .3s
+  &.tick__active
+    transform: rotate(180deg)
+
+.root__active
+  transition: .3s
+  border-radius: 8px 8px 0 0
+  border-bottom: 1px solid var(--tick)
