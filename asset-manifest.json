@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/gallery-paintings-v2/static/css/main.f37da915.css",
+    "main.js": "/gallery-paintings-v2/static/js/main.7ee5bc09.js",
+    "static/media/theme.svg": "/gallery-paintings-v2/static/media/theme.5e80aa732d0675e67f8a4916ece51461.svg",
+    "index.html": "/gallery-paintings-v2/index.html",
+    "static/media/logo.svg": "/gallery-paintings-v2/static/media/logo.93702d9e82afa8c9df410b91493f88df.svg",
+    "static/media/last.svg": "/gallery-paintings-v2/static/media/last.6f10db1625db04640e93cedfed4f9c37.svg",
+    "static/media/first.svg": "/gallery-paintings-v2/static/media/first.f16eab9a57c15754e4c732c389924513.svg",
+    "static/media/clean.svg": "/gallery-paintings-v2/static/media/clean.a38ce1a6fffa4c125c69c20797ec7740.svg",
+    "static/media/tick.svg": "/gallery-paintings-v2/static/media/tick.706576eb6e56d1d94bcb50bf62874dfa.svg",
+    "static/media/right.svg": "/gallery-paintings-v2/static/media/right.8bea5f36f8c095ad2f2f0e0d671a86b1.svg",
+    "static/media/left.svg": "/gallery-paintings-v2/static/media/left.8a0fea10543ce374554f1039a732803a.svg",
+    "main.f37da915.css.map": "/gallery-paintings-v2/static/css/main.f37da915.css.map",
+    "main.7ee5bc09.js.map": "/gallery-paintings-v2/static/js/main.7ee5bc09.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f37da915.css",
+    "static/js/main.7ee5bc09.js"
+  ]
+}
