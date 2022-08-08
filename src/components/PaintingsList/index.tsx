@@ -32,7 +32,17 @@ const PaintingsList = () => {
         createdBefore,
       })
     )
-    navigate('?' + qs.stringify({ page, locationId, authorId }))
+    navigate(
+      '?' +
+        qs.stringify({
+          page,
+          locationId,
+          authorId,
+          q: search,
+          createdFrom,
+          createdBefore,
+        })
+    )
   }, [
     locations,
     authors,

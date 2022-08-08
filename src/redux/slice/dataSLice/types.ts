@@ -38,8 +38,8 @@ export interface IgetPaintings {
   search: string
   authorId: numNul
   locationId: numNul
-  createdFrom: numNul
-  createdBefore: numNul
+  createdFrom: number | string
+  createdBefore: number | string
 }
 
 export interface IinitialState {

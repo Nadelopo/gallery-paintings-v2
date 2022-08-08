@@ -17,9 +17,8 @@ import { useAppDispatch, RootState } from 'redux/store'
 const Filters = () => {
   const dispatch = useAppDispatch()
   const { authors, locations } = useSelector((state: RootState) => state.data)
-  const { locationId, authorId } = useSelector(
-    (state: RootState) => state.filter
-  )
+  const { locationId, authorId, search, createdFrom, createdBefore } =
+    useSelector((state: RootState) => state.filter)
   R.useEffect(() => {
     dispatch(getAuthors())
     dispatch(getLocations())
@@ -45,17 +44,17 @@ const Filters = () => {
     dispatch(setLocationId(value))
   }, [])
 
-  const changeFrom = R.useCallback((value: number | null) => {
+  const changeFrom = R.useCallback((value: string) => {
     dispatch(setCreatedFrom(value))
   }, [])
 
-  const changeBefore = R.useCallback((value: number | null) => {
+  const changeBefore = R.useCallback((value: string) => {
     dispatch(setCreatedBefore(value))
   }, [])
 
   return (
     <div className={S.root}>
-      <Search setSearch={changeSearchValue} />
+      <Search setSearch={changeSearchValue} value={search} />
       <Dropdown
         title="Author"
         list={authors}
@@ -72,6 +71,8 @@ const Filters = () => {
         title="Created"
         setFrom={changeFrom}
         setBefore={changeBefore}
+        valueFrom={createdFrom}
+        valueBefore={createdBefore}
       />
     </div>
   )

@@ -4,6 +4,6 @@ export interface IinitialState {
   search: string
   authorId: numNul
   locationId: numNul
-  createdFrom: numNul
-  createdBefore: numNul
+  createdFrom: string
+  createdBefore: string
 }

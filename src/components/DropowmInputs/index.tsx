@@ -7,14 +7,18 @@ import { useAppDispatch } from 'redux/store'
 
 interface IDropdownInputs {
   title: string
-  setFrom: (value: number | null) => void
-  setBefore: (value: number | null) => void
+  setFrom: (value: string) => void
+  setBefore: (value: string) => void
+  valueFrom: string
+  valueBefore: string
 }
 
 const DropdownInputs: React.FC<IDropdownInputs> = ({
   title,
   setFrom,
   setBefore,
+  valueFrom,
+  valueBefore,
 }) => {
   const dispatch = useAppDispatch()
   const ul = R.useRef(null)
@@ -22,13 +26,18 @@ const DropdownInputs: React.FC<IDropdownInputs> = ({
   const [timeOutFrom, setTimeOutFrom] = R.useState(0)
   const [timeOutBefore, setTimeOutBefore] = R.useState(0)
 
+  const [valueFromInstantly, setValueFromInstantly] = R.useState(valueFrom)
+  const [valueBeforeInstantly, setValueBeforeInstantly] =
+    R.useState(valueBefore)
+
   const clickOutside = (e: MouseEvent) => {
     if (ul.current && !e.composedPath().includes(ul.current)) {
       setActive(false)
     }
   }
 
-  const onChangeValueFrom = (value: number) => {
+  const onChangeValueFrom = (value: string) => {
+    setValueFromInstantly(value)
     setTimeOutFrom(
       window.setTimeout(() => {
         setFrom(value)
@@ -38,7 +47,8 @@ const DropdownInputs: React.FC<IDropdownInputs> = ({
     clearTimeout(timeOutFrom)
   }
 
-  const onChangeValueBefore = (value: number) => {
+  const onChangeValueBefore = (value: string) => {
+    setValueBeforeInstantly(value)
     setTimeOutBefore(
       window.setTimeout(() => {
         setBefore(value)
@@ -65,17 +75,19 @@ const DropdownInputs: React.FC<IDropdownInputs> = ({
       <div className={S.drop + ` ${active && S.drop__active}`}>
         <div>
           <input
+            value={valueFromInstantly}
             type="number"
             placeholder="from"
-            onChange={(e) => onChangeValueFrom(Number(e.target.value))}
+            onChange={(e) => onChangeValueFrom(e.target.value)}
           />
         </div>
         <div className={S.line}></div>
         <div>
           <input
+            value={valueBeforeInstantly}
             type="number"
             placeholder="before"
-            onChange={(e) => onChangeValueBefore(Number(e.target.value))}
+            onChange={(e) => onChangeValueBefore(e.target.value)}
           />
         </div>
       </div>

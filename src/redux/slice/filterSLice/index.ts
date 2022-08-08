@@ -5,11 +5,11 @@ import { IinitialState, numNul } from './types'
 const query = qs.parse(window.location.search.replace('?', ''))
 
 const initialState: IinitialState = {
-  search: '',
+  search: query.q ? String(query.q) : '',
   authorId: query.authorId ? Number(query.authorId) : null,
   locationId: query.locationId ? Number(query.locationId) : null,
-  createdFrom: null,
-  createdBefore: null,
+  createdFrom: query.createdFrom ? String(query.createdFrom) : '',
+  createdBefore: query.createdBefore ? String(query.createdBefore) : '',
 }
 
 export const filterSlice = createSlice({
@@ -25,10 +25,10 @@ export const filterSlice = createSlice({
     setLocationId(state: IinitialState, action: PayloadAction<numNul>) {
       state.locationId = action.payload
     },
-    setCreatedFrom(state: IinitialState, action: PayloadAction<numNul>) {
+    setCreatedFrom(state: IinitialState, action: PayloadAction<string>) {
       state.createdFrom = action.payload
     },
-    setCreatedBefore(state: IinitialState, action: PayloadAction<numNul>) {
+    setCreatedBefore(state: IinitialState, action: PayloadAction<string>) {
       state.createdBefore = action.payload
     },
   },
