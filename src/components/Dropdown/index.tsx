@@ -16,7 +16,7 @@ interface IDropdown {
   nameId: number | null
 }
 
-const Dropdown: React.FC<IDropdown> = ({ list, title, changeData, nameId }) => {
+const Dropdown: R.FC<IDropdown> = ({ list, title, changeData, nameId }) => {
   const [active, setActive] = R.useState(false)
   const dispatch = useAppDispatch()
   const ul = R.useRef(null)
