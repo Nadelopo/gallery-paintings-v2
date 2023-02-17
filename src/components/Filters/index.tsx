@@ -9,7 +9,7 @@ import {
   setCreatedFrom,
   setCreatedBefore,
   setSearch,
-  setAuthorId,
+  setAuthorId
 } from 'redux/slice/filterSLice'
 import DropdowntInputs from 'components/DropowmInputs'
 import { useAppDispatch, RootState } from 'redux/store'

@@ -55,5 +55,5 @@ export interface IinitialState {
 export enum EisLoad {
   PENDING = 'pending',
   FULFILLED = 'fulfilled',
-  REJECTED = 'rejected',
+  REJECTED = 'rejected'
 }
