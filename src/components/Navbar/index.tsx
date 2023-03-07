@@ -1,7 +1,7 @@
+import { useTheme } from 'utils/theme'
 import { ReactComponent as LogoSVG } from 'icons/logo.svg'
 import { ReactComponent as ThemeSVG } from 'icons/theme.svg'
 import S from './navbar.module.sass'
-import { useTheme } from 'utils/theme'
 
 const Navbar: React.FC = () => {
   const { theme, setTheme } = useTheme()

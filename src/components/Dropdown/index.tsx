@@ -1,12 +1,12 @@
 import R from 'react'
-import S from './Dropdown.module.sass'
+import { useAppDispatch } from 'redux/store'
+import { setPage } from 'redux/slice/dataSLice'
 import { ReactComponent as TickSVG } from 'icons/tick.svg'
 import { ReactComponent as CleanSVG } from 'icons/clean.svg'
+import S from './Dropdown.module.sass'
 import 'styles/Dropdown.sass'
-import { setPage } from 'redux/slice/dataSLice'
-import { useAppDispatch } from 'redux/store'
 
-interface IDropdown {
+interface DropdownProps {
   list: {
     id: number
     name: string
@@ -16,7 +16,7 @@ interface IDropdown {
   nameId: number | null
 }
 
-const Dropdown: R.FC<IDropdown> = ({ list, title, changeData, nameId }) => {
+const Dropdown: R.FC<DropdownProps> = ({ list, title, changeData, nameId }) => {
   const [active, setActive] = R.useState(false)
   const dispatch = useAppDispatch()
   const ul = R.useRef(null)

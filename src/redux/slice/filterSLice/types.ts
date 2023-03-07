@@ -1,6 +1,6 @@
 export type numNul = number | null
 
-export interface IinitialState {
+export interface InitialState {
   search: string
   authorId: numNul
   locationId: numNul

@@ -1,6 +1,6 @@
 type numNul = number | null
 
-export interface Ipainting {
+export interface Painting {
   id: number
   authorId: number
   locationId: number
@@ -9,32 +9,26 @@ export interface Ipainting {
   created: string
 }
 
-export interface IpaintingSort {
-  id: number
-  authorId: number
-  locationId: number
+export interface VisiblePainting extends Painting {
   author: string
-  imageUrl: string
   location: string
-  name: string
-  created: string
 }
 
-export interface Iauthors {
+export interface Author {
   id: number
   name: string
 }
 
-export interface Ilocations {
+export interface Location {
   id: number
   location: string
 }
 
-export interface IgetPaintings {
+export interface GetParams {
   limit: number
   page: number
-  locations: Ilocations[]
-  authors: Iauthors[]
+  locations: Location[]
+  authors: Author[]
   search: string
   authorId: numNul
   locationId: numNul
@@ -43,9 +37,9 @@ export interface IgetPaintings {
 }
 
 export interface IinitialState {
-  items: IpaintingSort[]
-  authors: Iauthors[]
-  locations: Ilocations[]
+  items: VisiblePainting[]
+  authors: Author[]
+  locations: Location[]
   page: number
   limit: number
   isLoad: EisLoad

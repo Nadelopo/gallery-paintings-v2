@@ -1,12 +1,20 @@
 import S from './PaintingBlock.module.sass'
-import { IPaintingBlock } from './types'
 
-const PaintingBlock: React.FC<IPaintingBlock> = ({
+interface PaintingBlockProps {
+  author: string
+  created: string
+  imageUrl: string
+  location: string
+  name: string
+  id: number
+}
+
+const PaintingBlock: React.FC<PaintingBlockProps> = ({
   author,
   created,
   imageUrl,
   location,
-  name,
+  name
 }) => {
   return (
     <div className={S.wrapper}>

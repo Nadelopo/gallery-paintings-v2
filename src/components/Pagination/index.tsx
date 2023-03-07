@@ -1,13 +1,13 @@
 import R from 'react'
 import { useSelector } from 'react-redux'
-import S from './Pagination.module.sass'
+import { RootState } from 'redux/store'
+import { useAppDispatch } from 'redux/store'
+import { setPage, setLimit } from 'redux/slice/dataSLice'
 import { ReactComponent as PrevSVG } from 'icons/left.svg'
 import { ReactComponent as NextSVG } from 'icons/right.svg'
 import { ReactComponent as FirstSVG } from 'icons/first.svg'
 import { ReactComponent as LastSVG } from 'icons/last.svg'
-import { setPage, setLimit } from 'redux/slice/dataSLice'
-import { RootState } from 'redux/store'
-import { useAppDispatch } from 'redux/store'
+import S from './Pagination.module.sass'
 
 const Pagination = () => {
   const maxPage = 3

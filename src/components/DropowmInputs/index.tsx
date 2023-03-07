@@ -1,11 +1,11 @@
 import R from 'react'
-import S from './DropdownInputs.module.sass'
-import { ReactComponent as TickSVG } from 'icons/tick.svg'
-import 'styles/Dropdown.sass'
 import { setPage } from 'redux/slice/dataSLice'
 import { useAppDispatch } from 'redux/store'
+import { ReactComponent as TickSVG } from 'icons/tick.svg'
+import S from './DropdownInputs.module.sass'
+import 'styles/Dropdown.sass'
 
-interface IDropdownInputs {
+interface DropdownInputsProps {
   title: string
   setFrom: (value: string) => void
   setBefore: (value: string) => void
@@ -13,12 +13,12 @@ interface IDropdownInputs {
   valueBefore: string
 }
 
-const DropdownInputs: React.FC<IDropdownInputs> = ({
+const DropdownInputs: React.FC<DropdownInputsProps> = ({
   title,
   setFrom,
   setBefore,
   valueFrom,
-  valueBefore,
+  valueBefore
 }) => {
   const dispatch = useAppDispatch()
   const ul = R.useRef(null)

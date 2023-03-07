@@ -1,9 +1,6 @@
 import R from 'react'
-import Search from 'components/Search'
-import { getAuthors, getLocations } from 'redux/slice/dataSLice'
-import Dropdown from 'components/Dropdown'
-import S from './Filters.module.sass'
 import { useSelector } from 'react-redux'
+import { useAppDispatch, RootState } from 'redux/store'
 import {
   setLocationId,
   setCreatedFrom,
@@ -11,8 +8,11 @@ import {
   setSearch,
   setAuthorId
 } from 'redux/slice/filterSLice'
+import { getAuthors, getLocations } from 'redux/slice/dataSLice'
+import Search from 'components/Search'
+import Dropdown from 'components/Dropdown'
 import DropdowntInputs from 'components/DropowmInputs'
-import { useAppDispatch, RootState } from 'redux/store'
+import S from './Filters.module.sass'
 
 const Filters = () => {
   const dispatch = useAppDispatch()

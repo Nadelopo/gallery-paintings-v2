@@ -1,23 +1,23 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import axios from 'axios'
 import qs from 'qs'
+import { get } from 'utils/queries'
 import {
   EisLoad,
-  Iauthors,
-  IgetPaintings,
+  Author,
+  GetParams,
   IinitialState,
-  Ilocations,
-  Ipainting,
+  Location,
+  Painting
 } from './types'
 
 export const getPaintings = createAsyncThunk<
   {
-    data: Ipainting[]
-    locations: Ilocations[]
-    authors: Iauthors[]
+    data: Painting[]
+    locations: Location[]
+    authors: Author[]
     headerPages: number
   },
-  IgetPaintings
+  GetParams
 >('paintings/getPaintings', async (params) => {
   const {
     limit,
@@ -28,34 +28,32 @@ export const getPaintings = createAsyncThunk<
     authorId,
     locationId,
     createdFrom,
-    createdBefore,
+    createdBefore
   } = params
-  const response = await axios.get(process.env.REACT_APP_API + '/paintings', {
-    params: {
-      _page: page,
-      _limit: limit,
-      authorId,
-      locationId,
-      created_gte: createdFrom ? createdFrom : null,
-      created_lte: createdBefore ? createdBefore : null,
-      q: search,
-    },
+  const response = await get<Painting>('paintings', {
+    _page: page,
+    _limit: limit,
+    authorId,
+    locationId,
+    created_gte: String(createdFrom),
+    created_lte: String(createdBefore),
+    q: search
   })
-  const headerPages = Number(response.headers['x-total-count'])
-  const data = response.data
+  const headerPages = response.allItems
+  const data = response.result
   return { data, locations, authors, headerPages }
 })
 
 export const getAuthors = createAsyncThunk('authors/getAuthors', async () => {
-  const response = await axios.get(process.env.REACT_APP_API + '/authors')
-  return response.data
+  const { result } = await get<Author>('authors')
+  return result
 })
 
 export const getLocations = createAsyncThunk(
   'locations/getLocations',
   async () => {
-    const response = await axios.get(process.env.REACT_APP_API + '/locations')
-    return response.data
+    const { result } = await get<Location>('locations')
+    return result
   }
 )
 
@@ -71,7 +69,7 @@ const initialState: IinitialState = {
   page: getPageFromUrl(),
   limit: window.screen.width >= 1024 ? 9 : 12,
   isLoad: EisLoad.PENDING,
-  totalPages: 0,
+  totalPages: 0
 }
 
 export const dataSlice = createSlice({
@@ -84,7 +82,7 @@ export const dataSlice = createSlice({
     setLimit(state: IinitialState, action: PayloadAction<number>) {
       state.limit = action.payload
       state.page = 1
-    },
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(getPaintings.pending, (state) => {
@@ -102,7 +100,7 @@ export const dataSlice = createSlice({
               ?.name,
             location: action.payload.locations.filter(
               (a) => a.id === e.locationId
-            )[0]?.location,
+            )[0]?.location
           }
         })
         if (action.payload.data.length === 0) {
@@ -128,7 +126,7 @@ export const dataSlice = createSlice({
     builder.addCase(getLocations.rejected, (state) => {
       state.isLoad = EisLoad.REJECTED
     })
-  },
+  }
 })
 
 export const { setPage, setLimit } = dataSlice.actions

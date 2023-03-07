@@ -6,7 +6,6 @@ export const useTheme = () => {
   )
 
   useLayoutEffect(() => {
-    console.log(theme)
     document.documentElement.setAttribute('data-theme', String(theme))
     localStorage.setItem('theme', String(theme))
   }, [theme])

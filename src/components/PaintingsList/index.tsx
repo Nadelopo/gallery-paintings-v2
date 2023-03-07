@@ -1,13 +1,13 @@
 import R from 'react'
-import PaintingBlock from 'components/PaintingBlock'
-import Skeleton from 'components/PaintingBlock/Skeleton'
-import S from './PaintingsList.module.sass'
-import { getPaintings } from 'redux/slice/dataSLice'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import qs from 'qs'
 import { useAppDispatch, RootState } from 'redux/store'
+import { getPaintings } from 'redux/slice/dataSLice'
 import { EisLoad } from 'redux/slice/dataSLice/types'
+import PaintingBlock from 'components/PaintingBlock'
+import Skeleton from 'components/PaintingBlock/Skeleton'
+import S from './PaintingsList.module.sass'
 
 const PaintingsList = () => {
   const dispatch = useAppDispatch()
@@ -29,7 +29,7 @@ const PaintingsList = () => {
         authorId,
         locationId,
         createdFrom,
-        createdBefore,
+        createdBefore
       })
     )
     navigate(
@@ -40,7 +40,7 @@ const PaintingsList = () => {
           authorId,
           q: search,
           createdFrom,
-          createdBefore,
+          createdBefore
         })
     )
   }, [
@@ -52,7 +52,7 @@ const PaintingsList = () => {
     locationId,
     createdFrom,
     createdBefore,
-    page,
+    page
   ])
 
   const paintingBlock = items.map((paint) => (

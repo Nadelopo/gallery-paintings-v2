@@ -2,12 +2,12 @@ import R from 'react'
 import { setPage } from 'redux/slice/dataSLice'
 import { useAppDispatch } from 'redux/store'
 
-interface ISearch {
+interface SearchProps {
   setSearch: (value: string) => void
   value: string
 }
 
-const Search: R.FC<ISearch> = ({ setSearch, value }) => {
+const Search: R.FC<SearchProps> = ({ setSearch, value }) => {
   const dispatch = useAppDispatch()
   const [timeOut, setTimeOut] = R.useState(0)
   const [searchValue, setSearchValue] = R.useState(value)
